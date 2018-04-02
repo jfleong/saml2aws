@@ -110,7 +110,7 @@ func Login(loginFlags *flags.LoginExecFlags) error {
 
 	fmt.Println("Selected role:", role.RoleARN)
 
-	err = loginToStsUsingRole(role, sharedCreds, samlAssertion)
+	err = loginToStsUsingRole(role, sharedCreds, samlAssertion, loginFlags.SessionDuration)
 	if err != nil {
 		return errors.Wrap(err, "error logging into aws role using saml assertion")
 	}
@@ -220,7 +220,7 @@ func resolveRole(awsRoles []*saml2aws.AWSRole, samlAssertion string, loginFlags 
 	return role, nil
 }
 
-func loginToStsUsingRole(role *saml2aws.AWSRole, sharedCreds *awsconfig.CredentialsProvider, samlAssertion string) error {
+func loginToStsUsingRole(role *saml2aws.AWSRole, sharedCreds *awsconfig.CredentialsProvider, samlAssertion string, sessionDuration int64) error {
 
 	sess, err := session.NewSession()
 	if err != nil {
@@ -233,7 +233,7 @@ func loginToStsUsingRole(role *saml2aws.AWSRole, sharedCreds *awsconfig.Credenti
 		PrincipalArn:    aws.String(role.PrincipalARN), // Required
 		RoleArn:         aws.String(role.RoleARN),      // Required
 		SAMLAssertion:   aws.String(samlAssertion),     // Required
-		DurationSeconds: aws.Int64(MaxDurationSeconds), // 1 hour
+		DurationSeconds: aws.Int64(sessionDuration),
 	}
 
 	fmt.Println("Requesting AWS credentials using SAML assertion")

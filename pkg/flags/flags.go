@@ -23,8 +23,9 @@ func (cf *CommonFlags) RoleSupplied() bool {
 
 // LoginExecFlags flags for the Login / Exec commands
 type LoginExecFlags struct {
-	CommonFlags *CommonFlags
-	Profile     string
+	CommonFlags     *CommonFlags
+	Profile         string
+	SessionDuration int64
 }
 
 // ApplyFlagOverrides overrides IDPAccount with command line settings

@@ -70,6 +70,7 @@ func main() {
 	loginFlags := new(flags.LoginExecFlags)
 	loginFlags.CommonFlags = commonFlags
 	cmdLogin.Flag("profile", "The AWS profile to save the temporary credentials").Short('p').Default("saml").StringVar(&loginFlags.Profile)
+	cmdLogin.Flag("session-duration", "Duration for STS tokens in seconds").Default("3600").Int64Var(&loginFlags.SessionDuration)
 
 	// `exec` command and settings
 	cmdExec := app.Command("exec", "Exec the supplied command with env vars from STS token.")
