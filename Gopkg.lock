@@ -164,33 +164,6 @@
   revision = "1731857f09b1f38450e2c12409748407822dc6be"
 
 [[projects]]
-  name = "github.com/versent/saml2aws"
-  packages = [
-    ".",
-    "cmd/saml2aws/commands",
-    "helper/credentials",
-    "helper/osxkeychain",
-    "helper/wincred",
-    "mocks",
-    "pkg/awsconfig",
-    "pkg/cfg",
-    "pkg/creds",
-    "pkg/dump",
-    "pkg/flags",
-    "pkg/prompter",
-    "pkg/provider",
-    "pkg/provider/adfs",
-    "pkg/provider/adfs2",
-    "pkg/provider/jumpcloud",
-    "pkg/provider/keycloak",
-    "pkg/provider/okta",
-    "pkg/provider/pingfed",
-    "pkg/shell"
-  ]
-  revision = "6a33b7225953f0f29885d230079a66da510f6e8a"
-  version = "v2.3.0"
-
-[[projects]]
   branch = "master"
   name = "golang.org/x/crypto"
   packages = [
@@ -249,6 +222,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "037f47fb5824d402e90d3dba7eaedd73837858d60a1977eb74f1e79a63ef7a4e"
+  inputs-digest = "d43d69c82e9d60c1db79017936bd7b42eba3c6db89885d8380071a79897b4c5f"
   solver-name = "gps-cdcl"
   solver-version = 1
